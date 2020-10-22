@@ -10,6 +10,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using SKOL_API.Providers;
 using SKOL_API.Models;
+using SKOL.Data;
 
 namespace SKOL_API
 {
