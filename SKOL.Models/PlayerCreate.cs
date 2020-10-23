@@ -1,18 +1,15 @@
-﻿using System;
+﻿using SKOL.Data;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SKOL.Data
+namespace SKOL.Models
 {
-    public class Player
+    public class PlayerCreate
     {
-        [Key]
-        public int PlayerID { get; set; }
-        [Required]
-        public Guid UserID { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]
