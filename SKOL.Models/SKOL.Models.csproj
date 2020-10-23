@@ -56,6 +56,7 @@
   <ItemGroup>
     <Compile Include="PlayerCreate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VikingCreate.cs" />
     <Compile Include="VikingDetail.cs" />
   </ItemGroup>
   <ItemGroup>

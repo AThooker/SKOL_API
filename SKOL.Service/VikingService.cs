@@ -10,18 +10,19 @@ namespace SKOL.Service
 {
     public class VikingService
     {
-        ApplicationDbContext ctx = new ApplicationDbContext();
+        ApplicationDbContext _ctx = new ApplicationDbContext();
         public bool CreateViking(VikingCreate model)
         {
+            Player player = (Player)_ctx.Players.Where(p => p.Name == model.Name);
             Random rnd = new Random();
-            var entity =  new Viking
+            var entity = new Viking
                 {
                     Name = (Name)rnd.Next(0, Enum.GetNames(typeof(Name)).Length),
                     Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
-                    Kingdom = (Kingdom)ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+                    Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
                 };
-            ctx.Vikings.Add(entity);
-            return ctx.SaveChanges() == 1;
+            _ctx.Vikings.Add(entity);
+            return _ctx.SaveChanges() == 1;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace SKOL.Service
 {
     public class PlayerService
     {
-        ApplicationDbContext ctx = new ApplicationDbContext();
+        ApplicationDbContext _ctx = new ApplicationDbContext();
         //private read-only so it can't be altered somewhere else
         private readonly Guid _userId;
         //Constructor for service setting the global ID passed in equal to our field set above
@@ -21,15 +21,24 @@ namespace SKOL.Service
         //Create
         public bool CreatePlayer(PlayerCreate model)
         {
-            var entity = new Player()
+            var player = new Player()
             {
                 UserID = _userId,
                 Name = model.Name,
                 DateOfBirth = model.DateOfBirth,
                 Colors = model.Colors
             };
-            ctx.Players.Add(entity);
-            return ctx.SaveChanges() == 1;
+            _ctx.Players.Add(player);
+            Random rnd = new Random();
+            var viking = new Viking()
+            {
+                Name = if (Name > 9) {
+                (Name)rnd.Next(9, Enum.GetNames(typeof(Name)).Length);
+                    },
+                Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
+                Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+            };
+            return _ctx.SaveChanges() == 1;
         }
     }
 }
