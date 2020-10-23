@@ -11,14 +11,17 @@ namespace SKOL.Service
     public class VikingService
     {
         ApplicationDbContext ctx = new ApplicationDbContext();
-        public VikingDetail GetVikingByPlayer(int id)
+        public bool CreateViking(VikingCreate model)
         {
-            var query = ctx.Players.Where(p => p.PlayerID == id)
-                .Select(q => new VikingDetail
+            Random rnd = new Random();
+            var entity =  new Viking
                 {
-                    VikingID = q.PlayerID,
-                    Name = Random
-                })
+                    Name = (Name)rnd.Next(0, Enum.GetNames(typeof(Name)).Length),
+                    Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
+                    Kingdom = (Kingdom)ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+                };
+            ctx.Vikings.Add(entity);
+            return ctx.SaveChanges() == 1;
         }
     }
 }

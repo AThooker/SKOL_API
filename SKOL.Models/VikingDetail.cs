@@ -13,7 +13,7 @@ namespace SKOL.Models
         [Display(Name = "ID")]
         public int VikingID { get; set; }
         [Display(Name = "Viking Name")]
-        public string Name { get; set; }
+        public Name Name { get; set; }
         [Display(Name = "Your Occupation")]
         public Job Job { get; set; }
         [Display(Name = "Your Kingdom")]

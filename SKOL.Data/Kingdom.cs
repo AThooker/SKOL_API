@@ -18,7 +18,7 @@ namespace SKOL.Data
         [Required]
         public string King { get; set; }
         [Required]
-        public string History { get; set; }
+        public Colors Colors { get; set; }
         [Required]
         public int VikingID { get; set; }
         [ForeignKey(nameof(VikingID))]
