@@ -10,6 +10,8 @@ namespace SKOL.Models
 {
     public class VikingDetail
     {
+        [Display(Name = "ID")]
+        public int VikingID { get; set; }
         [Display(Name = "Viking Name")]
         public string Name { get; set; }
         [Display(Name = "Your Occupation")]

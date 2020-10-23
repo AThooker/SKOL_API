@@ -9,12 +9,13 @@ using System.Threading.Tasks;
 namespace SKOL.Data
 {
     public enum Job { Blacksmith, Farmer, King, Raider, ShipBuilder, Slave}
+    public enum Name { Herleif, Ragnar, Gunnar, Magnus, Aric, Ivar, Thor, Bjorn, Ulf, Arkyn, Astrid, Sigrid, Hilde, Ama, Rune, Gisli, Runa, Revna, Astra, Freya}
     public class Viking
     {
         [Key]
         public int VikingID { get; set; }
         [Required]
-        public string Name { get; set; }
+        public Name Name { get; set; }
         [Required]
         public Job Job { get; set; }
         [ForeignKey("Kingdom")]

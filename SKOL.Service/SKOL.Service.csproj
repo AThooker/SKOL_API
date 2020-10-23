@@ -54,11 +54,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="PlayerService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VikingService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SKOL.Data\SKOL.Data.csproj">
+      <Project>{8da76e4c-9377-411c-b7f3-c2878967d947}</Project>
+      <Name>SKOL.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SKOL.Models\SKOL.Models.csproj">
+      <Project>{cdf5511b-f9cf-4866-b8d3-b9a9f0791193}</Project>
+      <Name>SKOL.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

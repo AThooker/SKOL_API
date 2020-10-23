@@ -32,6 +32,9 @@ namespace SKOL.Data
         {
             return new ApplicationDbContext();
         }
+        public DbSet<Player> Players { get; set; }
+        public DbSet<Viking> Vikings { get; set; }
+        public DbSet<Kingdom> Kingdoms { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
