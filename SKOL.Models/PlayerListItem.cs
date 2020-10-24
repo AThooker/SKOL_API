@@ -1,22 +1,17 @@
 ﻿using SKOL.Data;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SKOL.Models
 {
-    public class PlayerCreate
+    public class PlayerListItem
     {
-        [Required]
         public string Name { get; set; }
-        [Required]
         public string Gender { get; set; }
-        [Required]
         public DateTime DateOfBirth { get; set; }
-        [Required]
         public Colors Colors { get; set; }
     }
 }

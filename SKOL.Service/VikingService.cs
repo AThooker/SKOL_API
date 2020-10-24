@@ -10,19 +10,42 @@ namespace SKOL.Service
 {
     public class VikingService
     {
-        ApplicationDbContext _ctx = new ApplicationDbContext();
-        public bool CreateViking(VikingCreate model)
+        private readonly ApplicationDbContext _ctx = new ApplicationDbContext();
+        private readonly Guid _userId;
+        public VikingService(Guid userId)
         {
-            Player player = (Player)_ctx.Players.Where(p => p.Name == model.Name);
+            _userId = userId;
+        }
+        public bool CreateViking(PlayerCreate model)
+        {
             Random rnd = new Random();
-            var entity = new Viking
+            if (model.Gender == "f")
+            {
+                var maiden = new Viking()
                 {
-                    Name = (Name)rnd.Next(0, Enum.GetNames(typeof(Name)).Length),
+                    Name = (Name)rnd.Next(9, Enum.GetNames(typeof(Name)).Length),
                     Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
                     Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
                 };
-            _ctx.Vikings.Add(entity);
-            return _ctx.SaveChanges() == 1;
+                _ctx.Vikings.Add(maiden);
+            };
+            if (model.Gender == "m")
+            {
+                var lad = new Viking()
+                {
+                    Name = (Name)rnd.Next(0, Enum.GetNames(typeof(Name)).Length - 9),
+                    Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
+                    Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+                };
+                _ctx.Vikings.Add(lad);
+            };
+                return _ctx.SaveChanges() == 1;
+        }
+        public IEnumerable<VikingDetail> GetVikings()
+        {
+           //Get all vikings for that user (not player) - each player will only have one viking, but each user can have several vikings/players
+
+          //Access the database and get vikings if they have the correct user Id
         }
     }
 }

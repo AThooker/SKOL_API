@@ -25,20 +25,28 @@ namespace SKOL.Service
             {
                 UserID = _userId,
                 Name = model.Name,
+                Gender = model.Gender.ToLower(),
                 DateOfBirth = model.DateOfBirth,
                 Colors = model.Colors
             };
             _ctx.Players.Add(player);
-            Random rnd = new Random();
-            var viking = new Viking()
-            {
-                Name = if (Name > 9) {
-                (Name)rnd.Next(9, Enum.GetNames(typeof(Name)).Length);
-                    },
-                Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
-                Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
-            };
+            var service = new VikingService();
+            var newVik = service.CreateViking(model);
             return _ctx.SaveChanges() == 1;
+        }
+
+        //Read
+        public IEnumerable<PlayerListItem> GetPlayers()
+        {
+            var query = _ctx.Players.Where(p => p.UserID == _userId)
+                .Select(p => new PlayerListItem
+                {
+                    Name = p.Name,
+                    Gender = p.Gender,
+                    DateOfBirth = p.DateOfBirth,
+                    Colors = p.Colors,
+                });
+            return query.ToArray();
         }
     }
 }
