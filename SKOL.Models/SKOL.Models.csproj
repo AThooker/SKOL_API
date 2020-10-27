@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KingdomCreate.cs" />
+    <Compile Include="KingdomDetail.cs" />
     <Compile Include="PlayerCreate.cs" />
     <Compile Include="PlayerListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

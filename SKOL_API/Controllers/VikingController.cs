@@ -20,6 +20,16 @@ namespace SKOL_API.Controllers
             var vikings = service.GetVikings();
             return Ok(vikings);
         }
+        [HttpDelete]
+        public IHttpActionResult DeleteViking(int id)
+        {
+            var service = CreateVikingService();
+            if(!service.DeleteViking(id))
+            {
+                return InternalServerError();
+            }
+            return Ok("Viking Deleted");
+        }
         //Create Service
         private VikingService CreateVikingService()
         {

@@ -56,5 +56,11 @@ namespace SKOL.Service
 
           //Access the database and get vikings if they have the correct user Id
         }
+        public bool DeleteViking(int id)
+        {
+            var viking = _ctx.Vikings.Single(p => p.VikingID == id);
+            _ctx.Vikings.Remove(viking);
+            return _ctx.SaveChanges() == 1;
+        }
     }
 }
