@@ -17,6 +17,6 @@ namespace SKOL.Models
         [Display(Name = "Your Occupation")]
         public Job Job { get; set; }
         [Display(Name = "Your Kingdom")]
-        public string Kingdom { get; set; }
+        public Kingdom Kingdom { get; set; }
     }
 }

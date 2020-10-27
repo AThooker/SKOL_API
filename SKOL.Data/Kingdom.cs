@@ -19,10 +19,6 @@ namespace SKOL.Data
         public string King { get; set; }
         [Required]
         public Colors Colors { get; set; }
-        [Required]
-        public int VikingID { get; set; }
-        [ForeignKey(nameof(VikingID))]
-        public virtual Viking Vikings { get; set; }
-       
+        public virtual ICollection<Viking> Vikings { get; set; }
     }
 }

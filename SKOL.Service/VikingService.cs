@@ -43,7 +43,16 @@ namespace SKOL.Service
         }
         public IEnumerable<VikingDetail> GetVikings()
         {
-           //Get all vikings for that user (not player) - each player will only have one viking, but each user can have several vikings/players
+            //Get all vikings for that user (not player) - each player will only have one viking, but each user can have several vikings/players
+            var query = _ctx.Vikings.Where(p => p.Player.UserID == _userId).Select(
+                p => new VikingDetail
+                {
+                    VikingID = p.VikingID,
+                    Name = p.Name,
+                    Job = p.Job,
+                    Kingdom = p.Kingdom,
+                });
+            return query.ToArray();
 
           //Access the database and get vikings if they have the correct user Id
         }

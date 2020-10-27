@@ -30,7 +30,7 @@ namespace SKOL.Service
                 Colors = model.Colors
             };
             _ctx.Players.Add(player);
-            var service = new VikingService();
+            var service = new VikingService(_userId);
             var newVik = service.CreateViking(model);
             return _ctx.SaveChanges() == 1;
         }
