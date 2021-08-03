@@ -16,5 +16,7 @@ namespace SKOL.Models
         public Job Job { get; set; }
         [Required]
         public Colors Colors { get; set; }
+        [Required]
+        public int KingdomID { get; set; }
     }
 }

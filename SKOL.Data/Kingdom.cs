@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SKOL.Data
 {
-    public enum Colors { }
+    public enum Colors {Red, Black, Blue, Green, Purple}
     public class Kingdom
     {
         [Key]

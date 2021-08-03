@@ -38,7 +38,13 @@ namespace SKOL.Service
                     Name = p.Name,
                     King = p.King,
                     Colors = p.Colors,
-                    Vikings = p.Vikings.ToList()
+                    Vikings = p.Vikings.Select(
+                                v => new VikingDetail
+                                {
+                                    VikingID = v.VikingID,
+                                    Name = v.Name.ToString(),
+                                    Job = v.Job.ToString()
+                                }).ToList()
 
                 });
             return query.ToArray();

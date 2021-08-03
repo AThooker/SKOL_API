@@ -31,7 +31,7 @@ namespace SKOL.Service
             };
             _ctx.Players.Add(player);
             var service = new VikingService(_userId);
-            var newVik = service.CreateViking(model);
+            service.CreateViking(model);
             return _ctx.SaveChanges() == 1;
         }
 

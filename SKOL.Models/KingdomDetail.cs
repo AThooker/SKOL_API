@@ -13,6 +13,6 @@ namespace SKOL.Models
         public string Name { get; set; }
         public string King { get; set; }
         public Colors Colors { get; set; }
-        public List<Viking> Vikings { get; set; }
+        public List<VikingDetail> Vikings { get; set; }
     }
 }

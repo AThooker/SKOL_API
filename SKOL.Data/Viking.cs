@@ -23,6 +23,6 @@ namespace SKOL.Data
         public virtual Kingdom Kingdom { get; set; }
         [ForeignKey(nameof(PlayerID))]
         public virtual Player Player { get; set; }
-        public int PlayerID { get; set; }
+        public int? PlayerID { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace SKOL.Service
                 {
                     Name = (Name)rnd.Next(9, Enum.GetNames(typeof(Name)).Length),
                     Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
-                    Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+                    Kingdom = _ctx.Kingdoms.Single(p => p.Colors == model.Colors)
                 };
                 _ctx.Vikings.Add(maiden);
             };
@@ -35,7 +35,7 @@ namespace SKOL.Service
                 {
                     Name = (Name)rnd.Next(0, Enum.GetNames(typeof(Name)).Length - 9),
                     Job = (Job)rnd.Next(0, Enum.GetNames(typeof(Job)).Length),
-                    Kingdom = (Kingdom)_ctx.Kingdoms.Where(p => p.Colors == model.Colors)
+                    Kingdom = _ctx.Kingdoms.Single(k => k.Colors == model.Colors),
                 };
                 _ctx.Vikings.Add(lad);
             };
@@ -44,13 +44,13 @@ namespace SKOL.Service
         public IEnumerable<VikingDetail> GetVikings()
         {
             //Get all vikings for that user (not player) - each player will only have one viking, but each user can have several vikings/players
-            var query = _ctx.Vikings.Where(p => p.Player.UserID == _userId).Select(
+            var query = _ctx.Vikings.Select(
                 p => new VikingDetail
                 {
                     VikingID = p.VikingID,
-                    Name = p.Name,
-                    Job = p.Job,
-                    Kingdom = p.Kingdom,
+                    Name = p.Name.ToString(),
+                    Job = p.Job.ToString(),
+                    KingdomName = p.Kingdom.Name,
                 });
             return query.ToArray();
 
